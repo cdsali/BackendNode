@@ -14,12 +14,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Replace with your build command if needed
-                sh 'npm run build'
-            }
-        }
+      
 
         stage('Start Application') {
             steps {
