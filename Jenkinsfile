@@ -1,12 +1,8 @@
 pipeline {
     agent any
 
-      environment {
-        NODEJS_HOME = tool name: 'Yarn', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-    }
-
     stages {
-          stage('Checkout') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -14,20 +10,31 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh "${NODEJS_HOME}/bin/yarn install"
+                sh 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'yarn build'  // Replace with your build command if needed
+                // Replace with your build command if needed
+                sh 'npm run build'
             }
         }
 
         stage('Start Application') {
             steps {
-                sh 'node app.js'  // Replace with your start command
+                // Replace with your start command
+                sh 'node app.js'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'The pipeline has completed successfully.'
+        }
+        failure {
+            echo 'The pipeline has failed.'
         }
     }
 }
