@@ -7,6 +7,7 @@ const app = express();
 const port = 3000;
 
 // Create MySQL connection pool
+/*
 const db = mysql.createPool({
     host: 'localhost', // Replace with your database host
     user: 'root',
@@ -14,7 +15,17 @@ const db = mysql.createPool({
     database: 'sastanaqqam',
     dateStrings: 'date'
   
+});//thJ..$!axP4z  o8N&$J2CDi8h
+*/
+const db = mysql.createPool({
+    host: '50.87.145.190', // Replace with your database host
+    user: 'sastana3_sas',
+    password: 'thJ..$!axP4z',
+    database: 'sastana3_website1',
+    dateStrings: 'date'
+
 });
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
