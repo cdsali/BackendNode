@@ -1,8 +1,12 @@
 pipeline {
     agent any
 
+      environment {
+        NODEJS_HOME = tool name: 'Yarn', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    }
+
     stages {
-        stage('Checkout') {
+          stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -10,7 +14,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'yarn install'
+                sh "${NODEJS_HOME}/bin/yarn install"
             }
         }
 
